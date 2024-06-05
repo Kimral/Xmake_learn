@@ -1,0 +1,11 @@
+[
+{
+  "directory": "/home/kimral/Personal/Projects/Xmake_learn",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-isystem", "/home/kimral/.xmake/packages/c/catch2/v3.6.0/7a09bad5624241e0b7ef802429669b9f/include", "-o", "build/.objs/Tests/linux/x86_64/debug/tests/main.test.cpp.o", "tests/main.test.cpp"],
+  "file": "tests/main.test.cpp"
+},
+{
+  "directory": "/home/kimral/Personal/Projects/Xmake_learn",
+  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-o", "build/.objs/App/linux/x86_64/debug/src/main.cpp.o", "src/main.cpp"],
+  "file": "src/main.cpp"
+}]
