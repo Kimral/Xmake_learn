@@ -12,8 +12,9 @@ target("__Inner_targer")
 
     set_default(false)
 
-    add_packages("imgui")
-    add_files("src/**.cpp")
+    add_packages("imgui", {public = true})
+    --add_files("src/**.cpp")
+    add_headerfiles("src/**.h")
 target_end()
 
 
@@ -22,6 +23,8 @@ target("App")
     set_version("0.0.1")
 
     add_deps("__Inner_targer")
+
+    add_files("main.cpp")
 
 target_end()
 
