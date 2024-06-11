@@ -9,32 +9,28 @@ set_arch(os.arch())
 
 target("__Inner_targer")
     set_kind("static")
-
     set_default(false)
-
+    set_languages("cxx23")
+    --#####
     add_packages("imgui", {public = true})
-    --add_files("src/**.cpp")
-    add_headerfiles("src/**.h")
+    add_includedirs("src/common", {public = true})
+    add_headerfiles("src/common/**.h")
 target_end()
 
 
 target("App")
     set_kind("binary")
     set_version("0.0.1")
-
+    --#####
     add_deps("__Inner_targer")
-
-    add_files("main.cpp")
-
+    add_files("src/main.cpp")
 target_end()
 
 
 target("Tests")
     set_kind("binary")
-
+    --#####
     add_packages("catch2")
-
     add_deps("__Inner_targer")
-
     add_files("tests/**.cpp")
 target_end()
