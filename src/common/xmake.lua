@@ -1,6 +1,5 @@
-add_rules("mode.debug", "mode.release")
-
-target("common")
+target("lib_common")
+    set_default(true)
     set_kind("static")
-    add_files("src/*.cpp")
+    add_headerfiles("src/**.h")
 target_end()

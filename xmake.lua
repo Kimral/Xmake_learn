@@ -7,6 +7,6 @@ includes("src/*") -- Пoдключить все targets
 target("App")
     set_kind("binary")
     set_languages()
-    add_packages(common)
+    add_packages(lib_common, lib_catch2)
     add_files("src/**.cpp")
 target_end()
