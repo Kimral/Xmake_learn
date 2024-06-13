@@ -4,11 +4,7 @@ add_rules("mode.debug", "mode.release")
 
 set_languages("c++20")
 
-target("lib_imgui")
-    set_kind("static")
-    add_includedirs("src/imgui", {public = true})
-    add_files("src/imgui/*.cpp")
-target_end()
+includes("src/*") -- Пoдключить все targets
 
 target("App")
     set_kind("binary")
