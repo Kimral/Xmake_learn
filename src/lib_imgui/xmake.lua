@@ -1,5 +1,8 @@
 target("lib_imgui")
     set_kind("static")
+
+    add_deps("lib_SDL2", {public = true})
+
     add_includedirs("src/", "src/backends/", {public = true})
 
     add_files("src/*.cpp")
