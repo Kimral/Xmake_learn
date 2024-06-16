@@ -1,11 +1,41 @@
 [
 {
-  "directory": "/home/kimral/Personal/Projects/Xmake_learn",
-  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-isystem", "/home/kimral/.xmake/packages/c/catch2/v3.6.0/7a09bad5624241e0b7ef802429669b9f/include", "-o", "build/.objs/Tests/linux/x86_64/debug/tests/main.test.cpp.o", "tests/main.test.cpp"],
-  "file": "tests/main.test.cpp"
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui.cpp.obj", "src\\lib_imgui\\src\\imgui.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\lib_imgui\\src\\imgui.cpp"
 },
 {
-  "directory": "/home/kimral/Personal/Projects/Xmake_learn",
-  "arguments": ["/usr/bin/gcc", "-c", "-m64", "-g", "-O0", "-DGLFW_INCLUDE_NONE", "-isystem", "/home/kimral/.xmake/packages/i/imgui/v1.90.7/5dac3490b29e4a06b9bb34cbad6f4c9f/include", "-isystem", "/home/kimral/.xmake/packages/i/imgui/v1.90.7/5dac3490b29e4a06b9bb34cbad6f4c9f/include/imgui", "-isystem", "/home/kimral/.xmake/packages/i/imgui/v1.90.7/5dac3490b29e4a06b9bb34cbad6f4c9f/include/backends", "-isystem", "/home/kimral/.xmake/packages/i/imgui/v1.90.7/5dac3490b29e4a06b9bb34cbad6f4c9f/include/misc/cpp", "-isystem", "/home/kimral/.xmake/packages/g/glfw/3.4/4c3c72af70fd4599a3038fc662af9c28/include", "-isystem", "/home/kimral/.xmake/packages/l/libxrandr/1.5.4/a36fcab100ed449e86944351e00c0384/include", "-isystem", "/home/kimral/.xmake/packages/l/libxinerama/1.1.5/e539e5b3575342a89c7a931295fe40c5/include", "-isystem", "/home/kimral/.xmake/packages/l/libxcursor/1.2.1/0732a9883e0c44a2a5e1529e9d2dbe14/include", "-isystem", "/home/kimral/.xmake/packages/l/libxrender/0.9.11/fac60acfd692409586d9ed6a3c85811e/include", "-isystem", "/home/kimral/.xmake/packages/l/libxi/1.8.1/f0ece17e7c7349338311542ec9d1306f/include", "-isystem", "/home/kimral/.xmake/packages/l/libxfixes/6.0.0/2d757f76f719404da3e722f3d838e427/include", "-isystem", "/home/kimral/.xmake/packages/l/libxext/1.3.6/5a0d83a7724446099fee649c3d9afd32/include", "-isystem", "/home/kimral/.xmake/packages/l/libx11/1.8.7/380a1842db954612a3e602b04bf6d53b/include", "-isystem", "/home/kimral/.xmake/packages/x/xtrans/1.4.0/5533066ad8b6406b88e992d9455b4f5b/include", "-isystem", "/home/kimral/.xmake/packages/l/libxcb/1.16/181975c075a447b882a80a2500bab765/include", "-isystem", "/home/kimral/.xmake/packages/l/libxau/1.0.11/aafb5d682970499891e46ca51c4d9476/include", "-isystem", "/home/kimral/.xmake/packages/l/libxdmcp/1.1.4/f0bc220dc4b74f18989972e6fbdd1201/include", "-isystem", "/home/kimral/.xmake/packages/x/xorgproto/2023.2/3a1682704c034fbf87583b32455dde94/include", "-o", "build/.objs/__Inner_targer/linux/x86_64/debug/src/main.cpp.o", "src/main.cpp"],
-  "file": "src/main.cpp"
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_demo.cpp.obj", "src\\lib_imgui\\src\\imgui_demo.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\lib_imgui\\src\\imgui_demo.cpp"
+},
+{
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_draw.cpp.obj", "src\\lib_imgui\\src\\imgui_draw.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\lib_imgui\\src\\imgui_draw.cpp"
+},
+{
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_tables.cpp.obj", "src\\lib_imgui\\src\\imgui_tables.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\lib_imgui\\src\\imgui_tables.cpp"
+},
+{
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_widgets.cpp.obj", "src\\lib_imgui\\src\\imgui_widgets.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\lib_imgui\\src\\imgui_widgets.cpp"
+},
+{
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\backends\\imgui_impl_sdl2.cpp.obj", "src\\lib_imgui\\src\\backends\\imgui_impl_sdl2.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\lib_imgui\\src\\backends\\imgui_impl_sdl2.cpp"
+},
+{
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\backends\\imgui_impl_vulkan.cpp.obj", "src\\lib_imgui\\src\\backends\\imgui_impl_vulkan.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\lib_imgui\\src\\backends\\imgui_impl_vulkan.cpp"
+},
+{
+  "directory": "d:\\Projects\\Xmake_learn",
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\App\\windows\\x64\\release\\src\\App\\src\\main.cpp.obj", "src\\App\\src\\main.cpp", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\cppwinrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\shared", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\ucrt", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\um", "-imsvc", "D:\\Windows Kits\\10\\Include\\10.0.22621.0\\winrt", "-imsvc", "D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\include"],
+  "file": "src\\App\\src\\main.cpp"
 }]
