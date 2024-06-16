@@ -1,5 +1,5 @@
 target("App")
     set_kind("binary")
-    add_deps("lib_SDL2", "lib_imgui")
+    add_deps("lib_imgui")
     add_files("src/*.cpp")
 target_end()
