@@ -1,5 +1,6 @@
 target("App")
     set_kind("binary")
+    set_optimize("fastest")
     add_deps("lib_imgui")
     add_files("src/*.cpp")
 target_end()
