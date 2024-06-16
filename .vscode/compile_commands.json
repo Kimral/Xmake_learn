@@ -1,41 +1,41 @@
 [
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui.cpp.obj", "src\\lib_imgui\\src\\imgui.cpp"],
-  "file": "src\\lib_imgui\\src\\imgui.cpp"
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\imgui\\imgui.cpp.obj", "src\\lib_imgui\\imgui\\imgui.cpp"],
+  "file": "src\\lib_imgui\\imgui\\imgui.cpp"
 },
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_demo.cpp.obj", "src\\lib_imgui\\src\\imgui_demo.cpp"],
-  "file": "src\\lib_imgui\\src\\imgui_demo.cpp"
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\imgui\\imgui_demo.cpp.obj", "src\\lib_imgui\\imgui\\imgui_demo.cpp"],
+  "file": "src\\lib_imgui\\imgui\\imgui_demo.cpp"
 },
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_draw.cpp.obj", "src\\lib_imgui\\src\\imgui_draw.cpp"],
-  "file": "src\\lib_imgui\\src\\imgui_draw.cpp"
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\imgui\\imgui_draw.cpp.obj", "src\\lib_imgui\\imgui\\imgui_draw.cpp"],
+  "file": "src\\lib_imgui\\imgui\\imgui_draw.cpp"
 },
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_tables.cpp.obj", "src\\lib_imgui\\src\\imgui_tables.cpp"],
-  "file": "src\\lib_imgui\\src\\imgui_tables.cpp"
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\imgui\\imgui_tables.cpp.obj", "src\\lib_imgui\\imgui\\imgui_tables.cpp"],
+  "file": "src\\lib_imgui\\imgui\\imgui_tables.cpp"
 },
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\imgui_widgets.cpp.obj", "src\\lib_imgui\\src\\imgui_widgets.cpp"],
-  "file": "src\\lib_imgui\\src\\imgui_widgets.cpp"
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\imgui\\imgui_widgets.cpp.obj", "src\\lib_imgui\\imgui\\imgui_widgets.cpp"],
+  "file": "src\\lib_imgui\\imgui\\imgui_widgets.cpp"
 },
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\backends\\imgui_impl_sdl2.cpp.obj", "src\\lib_imgui\\src\\backends\\imgui_impl_sdl2.cpp"],
-  "file": "src\\lib_imgui\\src\\backends\\imgui_impl_sdl2.cpp"
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\imgui\\backends\\imgui_impl_sdl2.cpp.obj", "src\\lib_imgui\\imgui\\backends\\imgui_impl_sdl2.cpp"],
+  "file": "src\\lib_imgui\\imgui\\backends\\imgui_impl_sdl2.cpp"
 },
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\src\\backends\\imgui_impl_vulkan.cpp.obj", "src\\lib_imgui\\src\\backends\\imgui_impl_vulkan.cpp"],
-  "file": "src\\lib_imgui\\src\\backends\\imgui_impl_vulkan.cpp"
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\lib_imgui\\windows\\x64\\release\\src\\lib_imgui\\imgui\\backends\\imgui_impl_vulkan.cpp.obj", "src\\lib_imgui\\imgui\\backends\\imgui_impl_vulkan.cpp"],
+  "file": "src\\lib_imgui\\imgui\\backends\\imgui_impl_vulkan.cpp"
 },
 {
   "directory": "D:\\Projects\\Xmake_learn",
-  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\src", "/Isrc\\lib_imgui\\src\\backends", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\App\\windows\\x64\\release\\src\\App\\src\\main.cpp.obj", "src\\App\\src\\main.cpp"],
+  "arguments": ["D:\\Apps\\VS2022\\Community\\VC\\Tools\\MSVC\\14.40.33807\\bin\\HostX64\\x64\\cl.exe", "/c", "/nologo", "/O2", "/std:c++20", "/Isrc\\lib_imgui\\imgui", "/Isrc\\lib_imgui\\imgui\\backends", "/ID:\\Apps\\vulkan_SDK\\Include", "/Isrc\\lib_SDL2\\src\\include", "/EHsc", "/DNDEBUG", "/Fobuild\\.objs\\App\\windows\\x64\\release\\src\\App\\src\\main.cpp.obj", "src\\App\\src\\main.cpp"],
   "file": "src\\App\\src\\main.cpp"
 }]
