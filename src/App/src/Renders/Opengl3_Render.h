@@ -8,13 +8,7 @@
 
 class Opengl3_Render {
 public:
-    void SetViewport(GLint x, GLint y, GLint wigth, GLint heigth) {
-        glViewport(x, y, wigth, heigth);
-    }
-    void SetClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha) {
-        glClearColor(red, green, blue, alpha);
-    }
-    void Clear() {
-        glClear(GL_COLOR_BUFFER_BIT);
-    }
+    void SetViewport(GLint x, GLint y, GLint wigth, GLint heigth);
+    void SetClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+    void Clear();
 };
