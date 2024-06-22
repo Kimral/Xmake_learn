@@ -2,14 +2,15 @@
 
 #include <memory>
 
-#include "MyImgui.h"
+#include "MyImguiBackends/MyImgui_common.h"
 
 class Application {
 public:
     Application() = default;
 
-    void SetReazation(std::unique_ptr<Imgui_Interface> realization) {
-        m_MyImgui = std::move(realization);;
+    // Сжирает владеющий указатель
+    void SetReazation(Imgui_Interface* realization) {
+        m_MyImgui = std::unique_ptr<Imgui_Interface>(realization);
     }
 
     void Init() {

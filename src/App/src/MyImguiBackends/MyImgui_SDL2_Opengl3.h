@@ -1,33 +1,14 @@
-#pragma once
+#pragma once 
 
-#include <functional>
-
-#include "imgui.h"
 #include "imgui_impl_sdl2.h"
 #include "imgui_impl_opengl3.h"
-
-#include "InputHandlers.h"
 
 // This example can also compile and run with Emscripten! See 'Makefile.emscripten' for details.
 #ifdef __EMSCRIPTEN__
 #include "../libs/emscripten/emscripten_mainloop_stub.h"
 #endif
 
-template <class InputHandler, class Render>
-class MyImgui {
-    MyImgui() {}   
-};
-
-class Imgui_Interface {
-public:
-    Imgui_Interface() {};
-    virtual ~Imgui_Interface() = default;
-
-    virtual void Run(std::function<void()> to_Do) = 0;
-    virtual ImGuiIO& GetIO() = 0;
-    virtual void SetClearColor(float r, float g, float b, float a) = 0;
-    virtual ImVec4& GetClearColor() = 0;
-};
+#include "InputHandlers.h"
 
 template<>
 class MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render> : public Imgui_Interface {
@@ -43,9 +24,9 @@ public:
         io.ConfigFlags |= ImGuiConfigFlags_NavEnableGamepad;      // Enable Gamepad Controls
 
         // Setup Dear ImGui style
-        //ImGui::StyleColorsDark();
+        ImGui::StyleColorsDark();
         //ImGui::StyleColorsLight();
-        ImGui::StyleColorsClassic();
+        //ImGui::StyleColorsClassic();
 
         // Setup Platform/Renderer backends
         ImGui_ImplSDL2_InitForOpenGL(m_InputHandler.GetWindow(), m_InputHandler.GetContext());
