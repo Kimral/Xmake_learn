@@ -1,4 +1,4 @@
-#pragma once 
+#pragma once
 
 #include <string>
 
@@ -12,15 +12,6 @@
 #include <stdio.h>
 
 #include "Renders.h"
-
-template <class Render>
-class SDL2_InHandler {
-public:
-    SDL2_InHandler() {};
-
-private:
-    Render m_Render;
-};
 
 template<>
 class SDL2_InHandler<Opengl3_Render> {
