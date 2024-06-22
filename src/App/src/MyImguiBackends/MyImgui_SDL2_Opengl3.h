@@ -10,6 +10,8 @@
 
 #include "InputHandlers.h"
 
+#include "MyImgui_common.h"
+
 template<>
 class MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render> : public Imgui_Interface {
 

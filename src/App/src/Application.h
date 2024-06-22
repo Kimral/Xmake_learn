@@ -2,14 +2,32 @@
 
 #include <memory>
 
-#include "MyImguiBackends/MyImgui_common.h"
+#include "MyImguiBackends/MyImgui_SDL2_Opengl3.h"
 
 class Application {
 public:
+    enum class InputHandlers {
+        SDL2
+    };
+    enum class Renders {
+        OpenGL3
+    };
+
     Application() = default;
 
+    void SetGuiBackend(InputHandlers inputHandler, Renders render) {
+        switch(inputHandler) {
+            case InputHandlers::SDL2: {
+                SetReazation_SDL2(render);
+                break;
+            }
+            default:
+                break;
+        }
+    }
+
     // Сжирает владеющий указатель
-    void SetReazation(Imgui_Interface* realization) {
+    void SetGuiBackend(Imgui_Interface* realization) {
         m_MyImgui = std::unique_ptr<Imgui_Interface>(realization);
     }
 
@@ -62,6 +80,16 @@ public:
             if (ImGui::Button("Close Me"))
             show_another_window = false;
             ImGui::End();
+        }
+    }
+
+private:
+    void SetReazation_SDL2(Renders render) {
+        switch(render) {
+            case Renders::OpenGL3: {
+                m_MyImgui = std::make_unique<SDL2_Imgui<Opengl3_Render>>();
+                break;
+            }
         }
     }
 
