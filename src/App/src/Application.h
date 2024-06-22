@@ -1,15 +1,23 @@
 #pragma once
 
+#include <memory>
+
 #include "MyImgui.h"
 
 class Application {
 public:
-    Application() {
-        m_MyImgui.SetClearColor(0.45f, 0.55f, 0.60f, 1.00f);
+    Application() = default;
+
+    void SetReazation(std::unique_ptr<Imgui_Interface> realization) {
+        m_MyImgui = std::move(realization);;
+    }
+
+    void Init() {
+        m_MyImgui->SetClearColor(0.45f, 0.55f, 0.60f, 1.00f);
     }
 
     void Run() {
-        m_MyImgui.Run([this](){
+        m_MyImgui->Run([this](){
             this->RunInner();
         });
     }
@@ -34,14 +42,14 @@ public:
             ImGui::Checkbox("Another Window", &show_another_window);
 
             ImGui::SliderFloat("float", &f, 0.0f, 1.0f);              // Edit 1 float using a slider from 0.0f to 1.0f
-            ImGui::ColorEdit3("clear color", (float*)&m_MyImgui.GetClearColor()); // Edit 3 floats representing a color
+            ImGui::ColorEdit3("clear color", (float*)&m_MyImgui->GetClearColor()); // Edit 3 floats representing a color
 
             if (ImGui::Button("Button"))                            // Buttons return true when clicked (most widgets return true when edited/activated)
             counter++;
             ImGui::SameLine();
             ImGui::Text("counter = %d", counter);
 
-            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / m_MyImgui.GetIO().Framerate, m_MyImgui.GetIO().Framerate);
+            ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / m_MyImgui->GetIO().Framerate, m_MyImgui->GetIO().Framerate);
             ImGui::End();
         }
 
@@ -57,5 +65,5 @@ public:
     }
 
 private:
-    MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render> m_MyImgui;
+    std::unique_ptr<Imgui_Interface> m_MyImgui;
 };

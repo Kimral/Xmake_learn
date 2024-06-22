@@ -18,8 +18,19 @@ class MyImgui {
     MyImgui() {}   
 };
 
+class Imgui_Interface {
+public:
+    Imgui_Interface() {};
+    virtual ~Imgui_Interface() = default;
+
+    virtual void Run(std::function<void()> to_Do) = 0;
+    virtual ImGuiIO& GetIO() = 0;
+    virtual void SetClearColor(float r, float g, float b, float a) = 0;
+    virtual ImVec4& GetClearColor() = 0;
+};
+
 template<>
-class MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render> {
+class MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render> : public Imgui_Interface {
 
 public:
     MyImgui() {
@@ -41,7 +52,15 @@ public:
         ImGui_ImplOpenGL3_Init(m_InputHandler.GetGLSLversion().c_str());
     }
 
-    void Run(std::function<void()> to_Do) {
+    ~MyImgui() override {
+        // Cleanup
+        ImGui_ImplOpenGL3_Shutdown();
+        ImGui_ImplSDL2_Shutdown();
+        ImGui::DestroyContext();
+    }
+
+
+    void Run(std::function<void()> to_Do) override {
         // Main loop
         #ifdef __EMSCRIPTEN__
         // For an Emscripten build we are disabling file-system access, so let's not attempt to do a fopen() of the imgui.ini file.
@@ -62,22 +81,15 @@ public:
         #endif
     }
 
-    ~MyImgui() {
-        // Cleanup
-        ImGui_ImplOpenGL3_Shutdown();
-        ImGui_ImplSDL2_Shutdown();
-        ImGui::DestroyContext();
-    }
-
-    ImGuiIO& GetIO() {
+    ImGuiIO& GetIO() override {
         return ImGui::GetIO();
     }
 
-    void SetClearColor(float r, float g, float b, float a) {
+    void SetClearColor(float r, float g, float b, float a) override {
         m_clear_color = ImVec4{r, g, b, a}; 
     }
 
-    ImVec4& GetClearColor() {
+    ImVec4& GetClearColor() override {
         return m_clear_color;
     }
 
@@ -88,6 +100,7 @@ private:
         ImGui_ImplSDL2_NewFrame();
         ImGui::NewFrame();
     }
+
     void ProcessEvent() {
         while (m_InputHandler.PollEvent())
         {
@@ -101,6 +114,7 @@ private:
             m_done = true;
         }
     }
+
     void FinishFrame() {
         // Rendering
         ImGui::Render();
@@ -118,3 +132,6 @@ private:
     bool m_done = false;
     ImVec4 m_clear_color;
 };
+
+template<typename Render>
+using SDL2_Imgui = MyImgui<SDL2_InHandler<Render>, Render>;
