@@ -2,7 +2,7 @@
 
 #include <memory>
 
-#include "MyImguiBackends/MyImgui_SDL2_Opengl3.h"
+#include "MyImgui/MyImgui_SDL2_Opengl3.h"
 
 class Application {
 public:
