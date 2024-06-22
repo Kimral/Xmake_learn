@@ -13,7 +13,6 @@ public:
     }
     void SetClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha) {
         glClearColor(red, green, blue, alpha);
-        //glClearColor(clear_color.x * clear_color.w, clear_color.y * clear_color.w, clear_color.z * clear_color.w, clear_color.w);
     }
     void Clear() {
         glClear(GL_COLOR_BUFFER_BIT);
