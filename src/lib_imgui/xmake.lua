@@ -3,6 +3,7 @@ target("lib_imgui")
 
     add_deps("lib_SDL2", {public = true})
 
+    add_headerfiles("src/**.h")
     add_includedirs("imgui/", "imgui/backends/", {public = true})
 
     add_files("imgui/*.cpp")
