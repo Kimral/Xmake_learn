@@ -5,9 +5,9 @@ target("App")
     add_deps("lib_imgui")
     add_files("src/*.cpp")
 
-    add_includedirs("src/InputHandlers/")
-    add_includedirs("src/InputHandlers/SDL2/")
-    add_includedirs("src/InputHandlers/SDL2/SDL2_Opengl3/")
-    
-    add_includedirs("src/Renders")
+    for _, dir in ipairs(os.dirs("src/**")) do
+        print(dir)
+        add_includedirs(dir)
+    end
+
 target_end()
