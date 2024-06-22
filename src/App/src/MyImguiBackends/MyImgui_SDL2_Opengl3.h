@@ -42,7 +42,6 @@ public:
         ImGui::DestroyContext();
     }
 
-
     void Run(std::function<void()> to_Do) override {
         // Main loop
         #ifdef __EMSCRIPTEN__

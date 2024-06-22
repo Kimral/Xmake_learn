@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <stdexcept>
 
 #include <SDL.h>
 #if defined(IMGUI_IMPL_OPENGL_ES2)
@@ -8,8 +9,6 @@
 #else
 #include <SDL_opengl.h>
 #endif
-
-#include <stdio.h>
 
 #include "Renders/Opengl3_Render.h"
 
@@ -20,7 +19,7 @@ public:
     {
         if (SDL_Init(SDL_INIT_VIDEO | SDL_INIT_TIMER | SDL_INIT_GAMECONTROLLER) != 0)
         {
-            printf("Error: %s\n", SDL_GetError());
+            throw std::runtime_error(SDL_GetError());
         }
 
         // Decide GL+GLSL versions
@@ -61,7 +60,7 @@ public:
         m_window = SDL_CreateWindow("Dear ImGui SDL2+OpenGL3 example", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 1280, 720, m_window_flags);
         if (m_window == nullptr)
         {
-            printf("Error: SDL_CreateWindow(): %s\n", SDL_GetError());
+            throw std::runtime_error(SDL_GetError());
         }
 
         m_gl_context = SDL_GL_CreateContext(m_window);
