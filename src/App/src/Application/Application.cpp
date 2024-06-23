@@ -11,11 +11,6 @@ void Application::SetGuiBackend(InputHandlers inputHandler, Renders render) {
     }
 }
 
-// —жирает владеющий указатель
-void Application::SetGuiBackend(Imgui_Interface* realization) {
-    m_MyImgui = std::unique_ptr<Imgui_Interface>(realization);
-}
-
 void Application::Init() {
     m_MyImgui->SetClearColor(0.45f, 0.55f, 0.60f, 1.00f);
 }

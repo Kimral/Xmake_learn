@@ -16,8 +16,6 @@ public:
     Application() = default;
 
     void SetGuiBackend(InputHandlers inputHandler, Renders render);
-    // Сжирает владеющий указатель
-    void SetGuiBackend(Imgui_Interface* realization);
     void Init();
     void Run();
     void RunInner();
@@ -27,4 +25,6 @@ private:
 
 private:
     std::unique_ptr<Imgui_Interface> m_MyImgui;
+    InputHandlers m_InputHandler;
+    Renders m_Render;
 };
