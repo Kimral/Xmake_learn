@@ -69,5 +69,8 @@ void Application::SetReazation_SDL2(Renders render) {
             m_MyImgui = std::make_unique<SDL2_Imgui<Opengl3_Render>>();
             break;
         }
+        case Renders::Vulkan: {
+            m_MyImgui = std::make_unique<SDL2_Imgui<Vulkan_Render>>();
+        }
     }
 }

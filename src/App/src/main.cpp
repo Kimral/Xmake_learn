@@ -6,7 +6,7 @@ int main(int, char**)
 {
     Application my_app;
     try {
-        my_app.SetGuiBackend(Application::InputHandlers::SDL2, Application::Renders::OpenGL3);
+        my_app.SetGuiBackend(Application::InputHandlers::SDL2, Application::Renders::Vulkan);
         my_app.Init();
         my_app.Run();
     }

@@ -3,6 +3,7 @@
 #include <memory>
 
 #include "MyImgui_SDL2_Opengl3.h"
+#include "MyImgui_SDL2_Vulkan.h"
 
 class Application {
 public:
@@ -10,7 +11,8 @@ public:
         SDL2
     };
     enum class Renders {
-        OpenGL3
+        OpenGL3,
+        Vulkan
     };
 
     Application() = default;
