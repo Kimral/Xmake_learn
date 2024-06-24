@@ -28,7 +28,6 @@ public:
     Opengl3_Render& GetRender();
     void SwapWindows();
 
-
 private:
     Opengl3_Render m_Render;
 

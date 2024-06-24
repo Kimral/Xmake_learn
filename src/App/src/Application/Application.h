@@ -27,6 +27,5 @@ private:
 
 private:
     std::unique_ptr<Imgui_Interface> m_MyImgui;
-    InputHandlers m_InputHandler;
     Renders m_Render;
 };
