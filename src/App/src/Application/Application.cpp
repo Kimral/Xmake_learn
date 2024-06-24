@@ -1,14 +1,35 @@
 #include "Application.h"
 
-void Application::SetGuiBackend(InputHandlers inputHandler, Renders render) {
-    switch (inputHandler) {
-    case InputHandlers::SDL2: {
-        SetReazation_SDL2(render);
-        break;
+void Application::Start() {
+    m_HandlerRequired = InputHandlers::SDL2;
+    m_RenderRequired = Renders::OpenGL3;
+    while (IsStartRequired()) {
+        SetStartRequired(false);
+        try {
+            SetGuiBackend();
+            Init();
+            Run();
+        }
+        catch (const std::runtime_error& error) {
+            std::cout << "Error: " << error.what() << std::endl;
+            break;
+        }
     }
-    default:
-        break;
+}
+
+void Application::SetGuiBackend() {
+    switch(m_HandlerRequired) {
+        case InputHandlers::SDL2: {
+            SetReazation_SDL2(m_RenderRequired);
+            break;
+        }
+        default:
+            break;
     }
+    m_CurrentHandler = m_HandlerRequired;
+    m_CurrentRender = m_RenderRequired;
+    m_HandlerRequired = InputHandlers::NONE;
+    m_RenderRequired = Renders::NONE;
 }
 
 void Application::Init() {
@@ -63,6 +84,14 @@ void Application::RunInner() {
     }
 }
 
+bool Application::IsStartRequired() {
+    return m_StartRequired;
+}
+
+void Application::SetStartRequired(bool value) {
+    m_StartRequired = value;
+}
+
 void Application::SetReazation_SDL2(Renders render) {
     switch (render) {
         case Renders::OpenGL3: {
@@ -71,6 +100,7 @@ void Application::SetReazation_SDL2(Renders render) {
         }
         case Renders::Vulkan: {
             m_MyImgui = std::make_unique<SDL2_Imgui<Vulkan_Render>>();
+            break;
         }
     }
 }
