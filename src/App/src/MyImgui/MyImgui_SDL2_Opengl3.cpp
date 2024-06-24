@@ -1,6 +1,6 @@
 #include "MyImgui_SDL2_Opengl3.h"
 
-MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::MyImgui() {
+MyImgui<SDL2_InHandler<Opengl3_Render>>::MyImgui() {
     // Setup Dear ImGui context
     IMGUI_CHECKVERSION();
 
@@ -19,14 +19,14 @@ MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::MyImgui() {
     ImGui_ImplOpenGL3_Init(m_InputHandler.GetGLSLversion().c_str());
 }
 
-MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::~MyImgui() {
+MyImgui<SDL2_InHandler<Opengl3_Render>>::~MyImgui() {
     // Cleanup
     ImGui_ImplOpenGL3_Shutdown();
     ImGui_ImplSDL2_Shutdown();
     ImGui::DestroyContext();
 }
 
-void MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::Run(std::function<void()> to_Do) {
+void MyImgui<SDL2_InHandler<Opengl3_Render>>::Run(std::function<void()> to_Do) {
     // Main loop
     #ifdef __EMSCRIPTEN__
     // For an Emscripten build we are disabling file-system access, so let's not attempt to do a fopen() of the imgui.ini file.
@@ -47,26 +47,26 @@ void MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::Run(std::function<
     #endif
 }
 
-ImGuiIO& MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::GetIO() {
+ImGuiIO& MyImgui<SDL2_InHandler<Opengl3_Render>>::GetIO() {
     return ImGui::GetIO();
 }
 
-void MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::SetClearColor(float r, float g, float b, float a) {
+void MyImgui<SDL2_InHandler<Opengl3_Render>>::SetClearColor(float r, float g, float b, float a) {
     m_clear_color = ImVec4{ r, g, b, a };
 }
 
-ImVec4& MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::GetClearColor() {
+ImVec4& MyImgui<SDL2_InHandler<Opengl3_Render>>::GetClearColor() {
     return m_clear_color;
 }
 
-void MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::NewFrame() {
+void MyImgui<SDL2_InHandler<Opengl3_Render>>::NewFrame() {
     // Start the Dear ImGui frame
     ImGui_ImplOpenGL3_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 }
 
-void MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::ProcessEvent() {
+void MyImgui<SDL2_InHandler<Opengl3_Render>>::ProcessEvent() {
     while (m_InputHandler.PollEvent())
     {
         const SDL_Event& l_Event = m_InputHandler.GetEvent();
@@ -80,7 +80,7 @@ void MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::ProcessEvent() {
     }
 }
 
-void MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render>::FinishFrame() {
+void MyImgui<SDL2_InHandler<Opengl3_Render>>::FinishFrame() {
     // Rendering
     ImGui::Render();
 

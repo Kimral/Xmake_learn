@@ -13,7 +13,7 @@
 #include "SDL2_Opengl3_InHandler.h"
 
 template<>
-class MyImgui<SDL2_InHandler<Opengl3_Render>, Opengl3_Render> : public Imgui_Interface {
+class MyImgui<SDL2_InHandler<Opengl3_Render>> : public Imgui_Interface {
 
 public:
     MyImgui();
@@ -36,4 +36,4 @@ private:
 };
 
 template<typename Render>
-using SDL2_Imgui = MyImgui<SDL2_InHandler<Render>, Render>;
+using SDL2_Imgui = MyImgui<SDL2_InHandler<Render>>;

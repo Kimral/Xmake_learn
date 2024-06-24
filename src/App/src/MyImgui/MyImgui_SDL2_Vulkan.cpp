@@ -1,6 +1,6 @@
 #include "MyImgui_SDL2_Vulkan.h"
 
-MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::MyImgui() {
+MyImgui<SDL2_InHandler<Vulkan_Render>>::MyImgui() {
     // Create Window Surface
     VkSurfaceKHR surface;
     if (SDL_Vulkan_CreateSurface(m_InputHandler.GetWindow(), m_InputHandler.GetRender().GetInstance(), &surface) == 0)
@@ -44,7 +44,7 @@ MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::MyImgui() {
     ImGui_ImplVulkan_Init(&init_info);
 }
 
-MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::~MyImgui() {
+MyImgui<SDL2_InHandler<Vulkan_Render>>::~MyImgui() {
     // Cleanup
     VkResult err = vkDeviceWaitIdle(m_InputHandler.GetRender().GetDevice());
     m_InputHandler.GetRender().check_vk_result(err);
@@ -59,7 +59,7 @@ MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::~MyImgui() {
     
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::CleanupVulkanWindow()
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::CleanupVulkanWindow()
 {
     ImGui_ImplVulkanH_DestroyWindow(m_InputHandler.GetRender().GetInstance(), 
                                     m_InputHandler.GetRender().GetDevice(),
@@ -67,7 +67,7 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::CleanupVulkanWindow(
                                     m_InputHandler.GetRender().GetAllocator());
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::Run(std::function<void()> to_Do) {
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::Run(std::function<void()> to_Do) {
     // Main loop
     while (!m_done)
     {
@@ -79,25 +79,25 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::Run(std::function<vo
     }
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::SetClearColor(float r, float g, float b, float a) {
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::SetClearColor(float r, float g, float b, float a) {
     m_clear_color = ImVec4{ r, g, b, a };
 }
 
-ImVec4& MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::GetClearColor() {
+ImVec4& MyImgui<SDL2_InHandler<Vulkan_Render>>::GetClearColor() {
     return m_clear_color;
 }
 
-ImGuiIO& MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::GetIO() {
+ImGuiIO& MyImgui<SDL2_InHandler<Vulkan_Render>>::GetIO() {
     return ImGui::GetIO();
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::NewFrame() {
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::NewFrame() {
     ImGui_ImplVulkan_NewFrame();
     ImGui_ImplSDL2_NewFrame();
     ImGui::NewFrame();
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::ProcessEvent() {
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::ProcessEvent() {
     while (m_InputHandler.PollEvent())
     {
         const SDL_Event& l_Event = m_InputHandler.GetEvent();
@@ -113,7 +113,7 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::ProcessEvent() {
     }
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::FinishFrame() {
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::FinishFrame() {
     // Rendering
     ImGui::Render();
     ImDrawData* draw_data = ImGui::GetDrawData();
@@ -131,7 +131,7 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::FinishFrame() {
     }
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::ResizeSwapChain() {
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::ResizeSwapChain() {
     // Resize swap chain?
     int fb_width, fb_height;
     SDL_GetWindowSize(m_InputHandler.GetWindow(), &fb_width, &fb_height);
@@ -154,7 +154,7 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::ResizeSwapChain() {
     }
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::FrameRender(ImDrawData* draw_data)
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::FrameRender(ImDrawData* draw_data)
 {
     VkResult err;
 
@@ -228,7 +228,7 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::FrameRender(ImDrawDa
     }
 }
 
-void MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render>::FramePresent()
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::FramePresent()
 {
     if (m_SwapChainRebuild)
         return;

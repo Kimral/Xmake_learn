@@ -8,7 +8,7 @@
 #include "SDL2_Vulkan_InHandler.h"
 
 template<>
-class MyImgui<SDL2_InHandler<Vulkan_Render>, Vulkan_Render> : public Imgui_Interface {
+class MyImgui<SDL2_InHandler<Vulkan_Render>> : public Imgui_Interface {
 
 public:
     MyImgui();

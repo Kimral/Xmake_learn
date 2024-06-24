@@ -4,7 +4,7 @@
 
 #include "imgui.h"
 
-template <class InputHandler, class Render>
+template <class InputHandler>
 class MyImgui {
     MyImgui() {}   
 };
