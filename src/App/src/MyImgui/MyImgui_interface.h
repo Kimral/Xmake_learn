@@ -18,5 +18,13 @@ public:
     virtual ImGuiIO& GetIO() = 0;
     virtual void SetClearColor(float r, float g, float b, float a) = 0;
     virtual ImVec4& GetClearColor() = 0;
+    virtual void Finish() = 0;
+
+    bool& Done() {
+        return m_Done;
+    }
+
+private:
+    bool m_Done = false;
 };
 

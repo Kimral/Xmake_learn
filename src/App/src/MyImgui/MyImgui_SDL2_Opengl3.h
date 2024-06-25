@@ -24,6 +24,8 @@ public:
     void SetClearColor(float r, float g, float b, float a) override;
     ImVec4& GetClearColor() override;
 
+    void Finish() override;
+
 private:
     void NewFrame();
     void ProcessEvent();
@@ -31,7 +33,6 @@ private:
 
 private:
     SDL2_InHandler<Opengl3_Render> m_InputHandler;
-    bool m_done = false;
     ImVec4 m_clear_color;
 };
 

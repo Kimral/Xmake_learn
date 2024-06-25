@@ -34,7 +34,7 @@ void MyImgui<SDL2_InHandler<Opengl3_Render>>::Run(std::function<void()> to_Do) {
     GetIO().IniFilename = nullptr;
     EMSCRIPTEN_MAINLOOP_BEGIN
     #else
-    while (!m_done)
+    while (!Done())
     #endif
     {
         ProcessEvent();
@@ -72,11 +72,11 @@ void MyImgui<SDL2_InHandler<Opengl3_Render>>::ProcessEvent() {
         const SDL_Event& l_Event = m_InputHandler.GetEvent();
         ImGui_ImplSDL2_ProcessEvent(&l_Event);
         if (l_Event.type == SDL_QUIT)
-            m_done = true;
+            Done() = true;
         if (l_Event.type == SDL_WINDOWEVENT &&
             l_Event.window.event == SDL_WINDOWEVENT_CLOSE &&
             l_Event.window.windowID == m_InputHandler.GetWindowId(m_InputHandler.GetWindow()))
-            m_done = true;
+            Done() = true;
     }
 }
 
@@ -90,4 +90,8 @@ void MyImgui<SDL2_InHandler<Opengl3_Render>>::FinishFrame() {
 
     ImGui_ImplOpenGL3_RenderDrawData(ImGui::GetDrawData());
     m_InputHandler.SwapWindows();
+}
+
+void MyImgui<SDL2_InHandler<Opengl3_Render>>::Finish() {
+    Done() = true;
 }

@@ -31,7 +31,7 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>>::CleanupVulkanWindow()
 }
 
 void MyImgui<SDL2_InHandler<Vulkan_Render>>::Run(std::function<void()> to_Do) {
-    while (!m_Done) {
+    while (!Done()) {
         ProcessEvent();
         ResizeSwapChain();
         NewFrame();
@@ -102,12 +102,12 @@ void MyImgui<SDL2_InHandler<Vulkan_Render>>::ProcessEvent() {
         const SDL_Event& l_Event = m_InputHandler.GetEvent();
         ImGui_ImplSDL2_ProcessEvent(&l_Event);
         if (l_Event.type == SDL_QUIT) {
-            m_Done = true;
+            Done() = true;
         } 
         if (l_Event.type == SDL_WINDOWEVENT &&
             l_Event.window.event == SDL_WINDOWEVENT_CLOSE &&
             l_Event.window.windowID == m_InputHandler.GetWindowId(m_InputHandler.GetWindow())) {
-            m_Done = true;
+            Done() = true;
         }
     }
 }
@@ -208,4 +208,8 @@ ImDrawData* MyImgui<SDL2_InHandler<Vulkan_Render>>::GetDrawData()
 void MyImgui<SDL2_InHandler<Vulkan_Render>>::WaitDeviceIdle()
 {
     m_InputHandler.GetRender().WaitDeviceIdle();
+}
+
+void MyImgui<SDL2_InHandler<Vulkan_Render>>::Finish() {
+    Done() = true;
 }

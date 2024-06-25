@@ -58,6 +58,7 @@ void Application::RunInner() {
 
     if (ImGui::Button("Restart")) {
         m_StartRequired = true;
+        m_MyImgui->Finish();
     }
 
     ImGui::End();

@@ -95,6 +95,8 @@ private:
 
     void WaitDeviceIdle();
 
+    void Finish() override;
+
 private:
     SDL2_InHandler<Vulkan_Render> m_InputHandler;
 
@@ -103,5 +105,4 @@ private:
     ImGui_ImplVulkan_InitInfo m_VulkanInitInfo{};
 
     uint32_t m_MinImageCount = 2;
-    bool m_Done = false;
 };
