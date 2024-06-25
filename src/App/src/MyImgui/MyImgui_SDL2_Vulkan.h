@@ -74,20 +74,34 @@ public:
             m_MinImageCount);
     }
 
+    void SetContext();
+    void SetStyle();
+    void InitVulkan();
+
 private:
     void NewFrame();
     void ProcessEvent();
     void FinishFrame();
     void ResizeSwapChain();
 
+    void SetClearColor();
+
     void FrameRender(ImDrawData* draw_data);
     void FramePresent();
 
+    bool IsMinimized();
+
+    ImDrawData* GetDrawData();
+
+    void WaitDeviceIdle();
+
 private:
-    uint32_t m_MinImageCount = 2;
-    bool m_SwapChainRebuild = false;
-    ImGui_ImplVulkanH_Window m_MainWindowData;
     SDL2_InHandler<Vulkan_Render> m_InputHandler;
-    bool m_done = false;
-    ImVec4 m_clear_color;
+
+    ImVec4 m_ClearColor{};
+    ImGui_ImplVulkanH_Window m_MainWindowData{};
+    ImGui_ImplVulkan_InitInfo m_VulkanInitInfo{};
+
+    uint32_t m_MinImageCount = 2;
+    bool m_Done = false;
 };

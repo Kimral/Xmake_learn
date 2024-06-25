@@ -44,7 +44,7 @@ void Application::RunInner() {
     ImGui::SetNextWindowSize(ImVec2(600, 400));
     ImGui::Begin("My window");
 
-    static const char* weaponNamesForCombobox[] = {
+    static const char* renders[] = {
         "NONE",
         "OpenGL3",
         "Vulkan"
@@ -52,7 +52,7 @@ void Application::RunInner() {
 
     // Convert the current enum value to an integer for ListBox
     int currentIndex = static_cast<int>(m_RenderRequired);
-    if(ImGui::ListBox("##paintkit1", &currentIndex, weaponNamesForCombobox, IM_ARRAYSIZE(weaponNamesForCombobox), 8)) {
+    if(ImGui::ListBox("##paintkit1", &currentIndex, renders, IM_ARRAYSIZE(renders), 8)) {
         m_RenderRequired = static_cast<Renders>(currentIndex);
     }
 

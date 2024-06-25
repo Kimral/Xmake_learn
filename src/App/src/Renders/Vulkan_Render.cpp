@@ -26,7 +26,7 @@ void Vulkan_Render::CleanupVulkan()
 	vkDestroyInstance(g_Instance, g_Allocator);
 }
 
-void Vulkan_Render::check_vk_result(VkResult err)
+void Vulkan_Render::CheckError(VkResult err)
 {
 	if (err == 0)
 		return;
@@ -59,16 +59,20 @@ VkQueue& Vulkan_Render::GetQueue() {
 	return g_Queue;
 }
 
-VkDebugReportCallbackEXT Vulkan_Render::GetDebugReport() {
+VkDebugReportCallbackEXT& Vulkan_Render::GetDebugReport() {
 	return g_DebugReport;
 }
 
-VkPipelineCache Vulkan_Render::GetPipelineCache() {
+VkPipelineCache& Vulkan_Render::GetPipelineCache() {
 	return g_PipelineCache;
 }
 
 VkDescriptorPool& Vulkan_Render::GetDescriptorPool() {
 	return g_DescriptorPool;
+}
+
+VkSurfaceKHR& Vulkan_Render::GetSurface() {
+    return surface;
 }
 
 bool Vulkan_Render::IsExtensionAvailable(const std::vector<VkExtensionProperties>& properties, const char* extension)
@@ -83,13 +87,13 @@ VkPhysicalDevice Vulkan_Render::SetupVulkan_SelectPhysicalDevice()
 {
     uint32_t gpu_count;
     VkResult err = vkEnumeratePhysicalDevices(GetInstance(), &gpu_count, nullptr);
-    check_vk_result(err);
+    CheckError(err);
     Assert(gpu_count > 0, "gpu_count > 0");
 
     std::vector<VkPhysicalDevice> gpus;
     gpus.resize(gpu_count);
     err = vkEnumeratePhysicalDevices(GetInstance(), &gpu_count, gpus.data());
-    check_vk_result(err);
+    CheckError(err);
 
     // If a number > 1 of GPUs got reported, find discrete GPU if present, or use first one available. This covers
     // most common cases (multi-gpu/integrated+dedicated graphics). Handling more complicated setups (multiple
@@ -126,7 +130,7 @@ void Vulkan_Render::SetupVulkan(std::vector<const char*> instance_extensions)
         vkEnumerateInstanceExtensionProperties(nullptr, &properties_count, nullptr);
         properties.resize(properties_count);
         err = vkEnumerateInstanceExtensionProperties(nullptr, &properties_count, properties.data());
-        check_vk_result(err);
+        CheckError(err);
 
         // Enable required extensions
         if (IsExtensionAvailable(properties, VK_KHR_GET_PHYSICAL_DEVICE_PROPERTIES_2_EXTENSION_NAME))
@@ -151,7 +155,7 @@ void Vulkan_Render::SetupVulkan(std::vector<const char*> instance_extensions)
         create_info.enabledExtensionCount = (uint32_t)instance_extensions.size();
         create_info.ppEnabledExtensionNames = instance_extensions.data();
         err = vkCreateInstance(&create_info, GetAllocator(), &GetInstance());
-        check_vk_result(err);
+        CheckError(err);
 #ifdef IMGUI_IMPL_VULKAN_USE_VOLK
         volkLoadInstance(g_Instance);
 #endif
@@ -218,7 +222,7 @@ void Vulkan_Render::SetupVulkan(std::vector<const char*> instance_extensions)
         create_info.enabledExtensionCount = (uint32_t)device_extensions.size();
         create_info.ppEnabledExtensionNames = device_extensions.data();
         err = vkCreateDevice(GetPhysicalDevice(), &create_info, GetAllocator(), &GetDevice());
-        check_vk_result(err);
+        CheckError(err);
         vkGetDeviceQueue(GetDevice(), GetQueueFamily(), 0, &GetQueue());
     }
 
@@ -237,6 +241,132 @@ void Vulkan_Render::SetupVulkan(std::vector<const char*> instance_extensions)
         pool_info.poolSizeCount = (uint32_t)ArraySize(pool_sizes);
         pool_info.pPoolSizes = pool_sizes;
         err = vkCreateDescriptorPool(GetDevice(), &pool_info, GetAllocator(), &GetDescriptorPool());
-        check_vk_result(err);
+        CheckError(err);
     }
+}
+
+void Vulkan_Render::WaitDeviceIdle()
+{
+    VkResult err = vkDeviceWaitIdle(GetDevice());
+    CheckError(err);
+}
+
+void Vulkan_Render::PresentFrame(VkSemaphore& semaphore,
+                                 const VkSwapchainKHR& swapchains,
+                                 uint32_t& frameIndex)
+{
+    if (m_SwapChainRebuild)
+        return;
+
+    VkSemaphore render_complete_semaphore = semaphore;
+    VkPresentInfoKHR info = {};
+    info.sType = VK_STRUCTURE_TYPE_PRESENT_INFO_KHR;
+    info.waitSemaphoreCount = 1;
+    info.pWaitSemaphores = &render_complete_semaphore;
+    info.swapchainCount = 1;
+    info.pSwapchains = &swapchains;
+    info.pImageIndices = &frameIndex;
+    VkResult err = vkQueuePresentKHR(GetQueue(), &info);
+    if (err == VK_ERROR_OUT_OF_DATE_KHR || err == VK_SUBOPTIMAL_KHR)
+    {
+        m_SwapChainRebuild = true;
+        return;
+    }
+    CheckError(err);
+}
+
+bool& Vulkan_Render::GetSwapChainRebuild() {
+    return m_SwapChainRebuild;
+}
+
+void Vulkan_Render::AcquireNextImage(VkSemaphore& imageAcquiredSemaphore,
+                                     VkSwapchainKHR& swapchain,
+                                     uint32_t& frameIndex)
+{
+    VkResult err = vkAcquireNextImageKHR(GetDevice(),
+        swapchain,
+        UINT64_MAX,
+        imageAcquiredSemaphore,
+        VK_NULL_HANDLE,
+        &frameIndex);
+    if (err == VK_ERROR_OUT_OF_DATE_KHR ||
+        err == VK_SUBOPTIMAL_KHR)
+    {
+        m_SwapChainRebuild = true;
+        return;
+    }
+    CheckError(err);
+}
+
+void Vulkan_Render::WaitForFences(VkFence& fence)
+{
+    VkResult err = vkWaitForFences(GetDevice(), 1, &fence, VK_TRUE, UINT64_MAX); // wait indefinitely instead of periodically checking
+    CheckError(err);
+}
+
+void Vulkan_Render::ResetFences(VkFence& fence)
+{
+    VkResult err = vkResetFences(GetDevice(), 1, &fence);
+    CheckError(err);
+}
+
+void Vulkan_Render::BeginCommandBuffer(VkCommandPool& commandPool, 
+                                       VkCommandBuffer& commandBuffer)
+{
+    VkResult err = vkResetCommandPool(GetDevice(), commandPool, 0);
+    CheckError(err);
+    VkCommandBufferBeginInfo info = {};
+    info.sType = VK_STRUCTURE_TYPE_COMMAND_BUFFER_BEGIN_INFO;
+    info.flags |= VK_COMMAND_BUFFER_USAGE_ONE_TIME_SUBMIT_BIT;
+    err = vkBeginCommandBuffer(commandBuffer, &info);
+    CheckError(err);
+}
+
+void Vulkan_Render::BeginRenderPass(VkRenderPass& renderPass,
+                                    VkFramebuffer framebuffer,
+                                    int width,
+                                    int height,
+                                    VkClearValue& clearValue,
+                                    VkCommandBuffer& commandBuffer)
+{
+    VkRenderPassBeginInfo info = {};
+    info.sType = VK_STRUCTURE_TYPE_RENDER_PASS_BEGIN_INFO;
+    info.renderPass = renderPass;
+    info.framebuffer = framebuffer;
+    info.renderArea.extent.width = width;
+    info.renderArea.extent.height = height;
+    info.clearValueCount = 1;
+    info.pClearValues = &clearValue;
+    vkCmdBeginRenderPass(commandBuffer, &info, VK_SUBPASS_CONTENTS_INLINE);
+}
+
+void Vulkan_Render::EndRenderPass(VkCommandBuffer& commandBuffer)
+{
+    // Submit command buffer
+    vkCmdEndRenderPass(commandBuffer);
+}
+
+void Vulkan_Render::EndCommandBuffer(VkCommandBuffer& commandBuffer)
+{
+    VkResult err = vkEndCommandBuffer(commandBuffer);
+    CheckError(err);
+}
+
+void Vulkan_Render::QueueSubmit(VkSemaphore& imageAcquiredSemaphore,
+                                VkCommandBuffer& commandBuffer, 
+                                VkSemaphore& renderCompleteSemaphore,
+                                VkFence& fence)
+{
+    VkPipelineStageFlags wait_stage = VK_PIPELINE_STAGE_COLOR_ATTACHMENT_OUTPUT_BIT;
+    VkSubmitInfo info = {};
+    info.sType = VK_STRUCTURE_TYPE_SUBMIT_INFO;
+    info.waitSemaphoreCount = 1;
+    info.pWaitSemaphores = &imageAcquiredSemaphore;
+    info.pWaitDstStageMask = &wait_stage;
+    info.commandBufferCount = 1;
+    info.pCommandBuffers = &commandBuffer;
+    info.signalSemaphoreCount = 1;
+    info.pSignalSemaphores = &renderCompleteSemaphore;
+    VkResult err = vkQueueSubmit(GetQueue(), 1, &info, fence);
+    CheckError(err);
 }

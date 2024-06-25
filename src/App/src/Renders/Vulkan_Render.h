@@ -18,12 +18,12 @@ public:
 
     // Функция, возвращающая указатель на функцию check_vk_result
     void (*GetCheckVkResultFunction())(VkResult) {
-        return &check_vk_result;
+        return &CheckError;
     }
 
     void Assert(bool value, const std::string& message);
 	void CleanupVulkan();
-	static void check_vk_result(VkResult err);
+	static void CheckError(VkResult err);
 
 	VkAllocationCallbacks* GetAllocator();
 	VkInstance& GetInstance();
@@ -31,13 +31,37 @@ public:
 	VkDevice& GetDevice();
 	uint32_t& GetQueueFamily();
 	VkQueue& GetQueue();
-	VkDebugReportCallbackEXT GetDebugReport();
-	VkPipelineCache GetPipelineCache();
+	VkDebugReportCallbackEXT& GetDebugReport();
+	VkPipelineCache& GetPipelineCache();
 	VkDescriptorPool& GetDescriptorPool();
+	VkSurfaceKHR& GetSurface();
 
     bool IsExtensionAvailable(const std::vector<VkExtensionProperties>& properties, const char* extension);
     VkPhysicalDevice SetupVulkan_SelectPhysicalDevice();
     void SetupVulkan(std::vector<const char*> instance_extensions);
+	void WaitDeviceIdle();
+	void PresentFrame(VkSemaphore& semaphore,
+					  const VkSwapchainKHR& swapchains,
+					  uint32_t& frameIndex);
+	bool& GetSwapChainRebuild();
+	void AcquireNextImage(VkSemaphore& imageAcquiredSemaphore,
+						  VkSwapchainKHR& swapchain,
+					      uint32_t& frameIndex);
+	void WaitForFences(VkFence& fence);
+	void ResetFences(VkFence& fence);
+	void BeginCommandBuffer(VkCommandPool& commandPool, VkCommandBuffer& commandBuffer);
+	void BeginRenderPass(VkRenderPass& renderPass,
+						 VkFramebuffer framebuffer,
+						 int width,
+						 int height,
+						 VkClearValue& clearValue,
+						 VkCommandBuffer& commandBuffer);
+	void EndRenderPass(VkCommandBuffer& commandBuffer);
+	void EndCommandBuffer(VkCommandBuffer& commandBuffer);
+	void QueueSubmit(VkSemaphore& imageAcquiredSemaphore,
+					 VkCommandBuffer& commandBuffer,
+				     VkSemaphore& renderCompleteSemaphore,
+					 VkFence& fence);
 
 private:
 	// Data
@@ -50,4 +74,8 @@ private:
 	VkDebugReportCallbackEXT g_DebugReport = VK_NULL_HANDLE;
 	VkPipelineCache          g_PipelineCache = VK_NULL_HANDLE;
 	VkDescriptorPool         g_DescriptorPool = VK_NULL_HANDLE;
+
+	VkSurfaceKHR surface;
+
+	bool m_SwapChainRebuild = false;
 };

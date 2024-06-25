@@ -2,11 +2,11 @@
 
 #include <string>
 #include <stdexcept>
+#include <vector>
+#include <tuple>
 
 #include <SDL.h>
 #include <SDL_vulkan.h>
-
-#include <vector>
 
 #include "Vulkan_Render.h"
 #include "SDL2_template.h"
@@ -26,20 +26,22 @@ public:
     }
 
     uint32_t GetWindowId(SDL_Window* window) {
-        return SDL_GetWindowID(m_window);
+        return SDL_GetWindowID(m_Window);
     }
 
-
     SDL_Window* GetWindow() {
-        return m_window;
+        return m_Window;
     }
 
     Vulkan_Render& GetRender();
 
+    void CreateWindowSurface();
+    std::pair<int, int> GetWindowSize();
+
 private:
     Vulkan_Render m_Render;
 
-    SDL_WindowFlags m_window_flags;
-    SDL_Window* m_window;
+    SDL_WindowFlags m_WindowFlags;
+    SDL_Window* m_Window;
     SDL_Event m_LastEvent;
 };
