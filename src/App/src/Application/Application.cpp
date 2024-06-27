@@ -41,27 +41,8 @@ void Application::Run() {
 }
 
 void Application::RunInner() {
-    ImGui::SetNextWindowSize(ImVec2(600, 400));
-    ImGui::Begin("My window");
-
-    static const char* renders[] = {
-        "NONE",
-        "OpenGL3",
-        "Vulkan"
-    };
-
-    // Convert the current enum value to an integer for ListBox
-    int currentIndex = static_cast<int>(m_RenderRequired);
-    if(ImGui::ListBox("##paintkit1", &currentIndex, renders, IM_ARRAYSIZE(renders), 8)) {
-        m_RenderRequired = static_cast<Renders>(currentIndex);
-    }
-
-    if (ImGui::Button("Restart")) {
-        m_StartRequired = true;
-        m_MyImgui->Finish();
-    }
-
-    ImGui::End();
+    CreateSettingWidget();
+    CreateMainWidget();
 }
 
 bool Application::IsStartRequired() {
@@ -84,4 +65,54 @@ void Application::SetReazation_SDL2(Renders render) {
             break;
         }
     }
+}
+
+void Application::CreateSettingWidget() {
+    ImGui::SetNextWindowSize(ImVec2(300, 200));
+    ImGui::Begin("Setting");
+
+    static const char* renders[] = {
+        "NONE",
+        "OpenGL3",
+        "Vulkan"
+    };
+
+    // Convert the current enum value to an integer for ListBox
+    int currentIndex = static_cast<int>(m_RenderRequired);
+    if (ImGui::ListBox("##paintkit1", &currentIndex, renders, IM_ARRAYSIZE(renders), 3)) {
+        m_RenderRequired = static_cast<Renders>(currentIndex);
+    }
+
+    if (ImGui::Button("Restart")) {
+        m_StartRequired = true;
+        m_MyImgui->Finish();
+    }
+
+    ImGui::End();
+}
+
+void Application::CreateMainWidget() {
+    ImGui::SetNextWindowSize(ImVec2(600, 400));
+    ImGui::Begin("Main window");
+
+    int gridSize = 3;
+    int buttonWidth = 50;
+    int buttonHeight = buttonWidth;
+    int spacing = 5;
+
+    for (int row = 0; row < gridSize; ++row)
+    {
+        for (int col = 0; col < gridSize - 1; ++col)
+        {
+            // Draw button
+            std::string buttonLabel = "##";
+            ImGui::Button("##", ImVec2(buttonWidth, buttonHeight));
+            ImGui::SameLine();
+        }
+        // Draw button
+        std::string buttonLabel = "##";
+        ImGui::Button(buttonLabel.c_str(), ImVec2(buttonWidth, buttonHeight));
+    }
+
+    ImGui::End();
 }

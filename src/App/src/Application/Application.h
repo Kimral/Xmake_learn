@@ -31,6 +31,9 @@ public:
 private:
     void SetReazation_SDL2(Renders render);
 
+    void CreateSettingWidget();
+    void CreateMainWidget();
+
 private:
     std::unique_ptr<Imgui_Interface> m_MyImgui;
 
